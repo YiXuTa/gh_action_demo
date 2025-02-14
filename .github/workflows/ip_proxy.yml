@@ -8,20 +8,22 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Print a greeting
+      - name: Greeting
         env:
-          MY_VAR: Hi there! My name is
-          FIRST_NAME: Mona
-          MIDDLE_NAME: The
-          LAST_NAME: Octocat
+          MY_VAR: Hello God!
         run: |
-          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+          echo $MY_VAR
   job2:
     needs: job1
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
     steps:
-      - name: Print a farewell message
-        env:
-          MY_VAR: Goodbye,
-          FIRST_NAME: Mona
-        run: date
+      - name: Check out the repository to the runner
+        uses: actions/checkout@v4
+      - name: Make executable
+        run: chmod +x ip_proxy.sh
+      - name: Run a script
+        run: ./ip_proxy.sh
+
