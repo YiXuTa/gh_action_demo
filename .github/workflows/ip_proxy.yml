@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:    
+      - master
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+        run: |
+          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a farewell message
+        env:
+          MY_VAR: Goodbye,
+          FIRST_NAME: Mona
