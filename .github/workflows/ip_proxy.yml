@@ -24,6 +24,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Make executable
         run: chmod +x ip_proxy.sh
-      - name: Run ip_proxy.sh
+      - name: EXE ip_proxy.sh
         run: ./ip_proxy.sh
 
