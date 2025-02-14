@@ -13,7 +13,7 @@ jobs:
           MY_VAR: Hello God!
         run: |
           echo $MY_VAR
-  job2:
+  server:
     needs: job1
     runs-on: ubuntu-latest
     defaults:
