@@ -3,8 +3,11 @@ set -uex
 date
 # 只有内网地址
 hostname -I
-pwd
-USERPWD=""
+
+cwd=$(pwd)
+
+# root default empty password
+PASSWORD=""
 
 
 curl ifconfig.me
@@ -14,8 +17,11 @@ tar xf $soft1.tar.xz
 ls -alh
 cd $soft1
 ./configure
-echo $USERPWD | sudo -S make
-echo $USERPWD | sudo -S make install
+echo "$PASSWORD" | sudo -S make
+echo "$PASSWORD" | sudo -S make install
 whereis tinyproxy
+
+tinyproxy -d -c "$cwd"/tinyproxy.conf
+
 echo "Done!"
 
